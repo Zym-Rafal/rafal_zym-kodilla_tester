@@ -1,12 +1,11 @@
 package com.kodilla;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Random;
 
 public class RandomNumbers {
 
-    List<Integer> randomNumbers;
+    private int minNumber = 31;
+    private int maxNumber = 0;
 
     public static void main(String[] args) {
         RandomNumbers rn = new RandomNumbers();
@@ -14,38 +13,29 @@ public class RandomNumbers {
 
         System.out.println(rn.getMinNumber());
         System.out.println(rn.getMaxNumber());
-        System.out.println(rn.randomNumbers);
     }
 
     public void getRandomNumber() {
-        randomNumbers = new ArrayList<>();
         Random random = new Random();
-        int max = 5000;
+        int maxSum = 5000;
         int sum = 0;
-        while (sum <= max) {
+        while (sum <= maxSum) {
             int randomNumber = random.nextInt(31);
             sum += randomNumber;
-            randomNumbers.add(randomNumber);
+            if(randomNumber<minNumber) {
+                minNumber = randomNumber;
+            }
+            if(randomNumber>maxNumber) {
+                maxNumber = randomNumber;
+            }
         }
     }
 
     public int getMaxNumber() {
-        int max = 0;
-        for (int value : randomNumbers) {
-            if (value > max) {
-                max = value;
-            }
-        }
-        return max;
+        return this.maxNumber;
     }
 
     public int getMinNumber() {
-        int min = 31;
-        for (int value : randomNumbers) {
-            if (value < min) {
-                min = value;
-            }
-        }
-        return min;
+        return this.minNumber;
     }
 }
