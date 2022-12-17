@@ -11,12 +11,12 @@ public class CashMachineTestSuite {
 
     @BeforeAll
     public static void setup() {
-        cashMachine = new CashMachine(1000, 100, 200, -50);
+        cashMachine = new CashMachine(100, 200, -50);
     }
 
     @Test
     public void shouldReturnAmount() {
-        assertEquals(1250, cashMachine.getBalance());
+        assertEquals(250, cashMachine.getBalance());
     }
 
     @Test

@@ -3,11 +3,9 @@ package com.kodilla.homework;
 public class CashMachine {
 
     private double[] transactions;
-    private double balance;
 
-    public CashMachine(double balance, double... transactions) {
+    public CashMachine(double... transactions) {
         this.transactions = transactions;
-        this.balance = balance;
     }
 
     public int getQuantityOfTransactions() {
@@ -15,8 +13,9 @@ public class CashMachine {
     }
 
     public double getBalance() {
+        double balance = 0;
         for (double transaction : transactions) {
-            this.balance = this.balance + transaction;
+            balance += transaction;
         }
         return balance;
     }

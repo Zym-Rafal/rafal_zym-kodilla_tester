@@ -13,15 +13,15 @@ public class BankTestSuite {
 
     @BeforeAll
     public static void setup() {
-        cashMachine1 = new CashMachine(2000, 500,200,-300);
-        cashMachine2 = new CashMachine(2300, 400,300,-800);
-        cashMachine3 = new CashMachine(1000, -500,-200,-200);
+        cashMachine1 = new CashMachine(500,200,-300);
+        cashMachine2 = new CashMachine(400,300,-800);
+        cashMachine3 = new CashMachine(-500,-200,-200, 800);
         bank = new Bank(cashMachine1, cashMachine2, cashMachine3);
     }
 
     @Test
     public void shouldReturnTotalAmountOfCashInAllCashMachines() {
-        Assertions.assertEquals(4700, bank.getTotalAmountOfCashInAllCashMachines());
+        Assertions.assertEquals(200, bank.getTotalAmountOfCashInAllCashMachines());
     }
 
     @Test
@@ -31,12 +31,12 @@ public class BankTestSuite {
 
     @Test
     public void shouldReturnTotalAmountOfDeposits() {
-        Assertions.assertEquals(1400, bank.getSumOfDeposits());
+        Assertions.assertEquals(2200, bank.getSumOfDeposits());
     }
 
     @Test
     public void shouldReturnAverageValueOfDeposits() {
-        Assertions.assertEquals(350, bank.getAverageValueOfDeposits());
+        Assertions.assertEquals(440, bank.getAverageValueOfDeposits());
     }
 
     @Test
