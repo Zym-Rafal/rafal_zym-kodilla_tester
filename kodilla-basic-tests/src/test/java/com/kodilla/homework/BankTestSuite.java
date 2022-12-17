@@ -26,12 +26,12 @@ public class BankTestSuite {
 
     @Test
     public void shouldReturnTotalAmountOfWithdrawals() {
-        Assertions.assertEquals(2000, bank.getTotalAmountOfWithdrawals());
+        Assertions.assertEquals(2000, bank.getSumOfWithdrawals());
     }
 
     @Test
     public void shouldReturnTotalAmountOfDeposits() {
-        Assertions.assertEquals(1400, bank.getTotalAmountOfDeposits());
+        Assertions.assertEquals(1400, bank.getSumOfDeposits());
     }
 
     @Test

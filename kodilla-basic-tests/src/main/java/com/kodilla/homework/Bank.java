@@ -11,60 +11,48 @@ public class Bank {
     public double getTotalAmountOfCashInAllCashMachines() {
         double totalAmount = 0;
         for (CashMachine cashMachine : cashMachines) {
-            totalAmount = totalAmount + cashMachine.getAmount();
+            totalAmount = totalAmount + cashMachine.getBalance();
         }
         return totalAmount;
     }
 
-    public double getTotalAmountOfWithdrawals() {
-        double totalAmountOfWithdrawals = 0;
+    public double getSumOfWithdrawals() {
+        double sum = 0;
         for (CashMachine cashMachine : cashMachines) {
-            for (double transaction : cashMachine.getTransactions()) {
-                if (transaction < 0) {
-                    totalAmountOfWithdrawals = totalAmountOfWithdrawals + transaction;
-                }
-            }
+            sum = sum + cashMachine.getSumOfWithdraws();
         }
-        return totalAmountOfWithdrawals*-1;
+        return sum;
     }
 
-    public double getTotalAmountOfDeposits() {
-        double totalAmountOfDeposits = 0;
+    public double getSumOfDeposits() {
+        double sum = 0;
         for (CashMachine cashMachine : cashMachines) {
-            for (double transaction : cashMachine.getTransactions()) {
-                if (transaction > 0) {
-                    totalAmountOfDeposits = totalAmountOfDeposits + transaction;
-                }
-            }
+          sum = sum + cashMachine.getSumOfDeposits();
         }
-        return totalAmountOfDeposits;
+        return sum;
+    }
+
+    public double getNumberOfWithdrawals() {
+        double numberOfWithdraws = 0;
+        for (CashMachine cashMachine : cashMachines) {
+            numberOfWithdraws = numberOfWithdraws + cashMachine.getNumberOfWithdraws();
+        }
+        return numberOfWithdraws;
+    }
+
+    public double getNumberOfDeposits() {
+        double numberOfDeposits = 0;
+        for (CashMachine cashMachine : cashMachines) {
+          numberOfDeposits = numberOfDeposits + cashMachine.getNumberOfDeposits();
+        }
+        return numberOfDeposits;
     }
 
     public double getAverageValueOfWithdrawals() {
-        double totalAmountOfWithdrawals = 0;
-        int quantityOfWithdrawals = 0;
-        for (CashMachine cashMachine : cashMachines) {
-            for (double transaction : cashMachine.getTransactions()) {
-                if (transaction < 0) {
-                    quantityOfWithdrawals++;
-                    totalAmountOfWithdrawals = totalAmountOfWithdrawals + transaction;
-                }
-            }
-        }
-        return (totalAmountOfWithdrawals*-1)/quantityOfWithdrawals;
+        return getSumOfWithdrawals()/getNumberOfWithdrawals();
     }
 
     public double getAverageValueOfDeposits() {
-        double totalAmountOfDepostits = 0;
-        int quantityOfDeposits = 0;
-        for (CashMachine cashMachine : cashMachines) {
-            for (double transaction : cashMachine.getTransactions()) {
-                if (transaction > 0) {
-                    quantityOfDeposits++;
-                    totalAmountOfDepostits = totalAmountOfDepostits + transaction;
-                }
-            }
-        }
-        return totalAmountOfDepostits/quantityOfDeposits;
+        return getSumOfDeposits()/getNumberOfDeposits();
     }
 }

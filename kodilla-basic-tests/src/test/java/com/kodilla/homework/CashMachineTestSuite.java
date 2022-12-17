@@ -1,6 +1,5 @@
 package com.kodilla.homework;
 
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +16,7 @@ public class CashMachineTestSuite {
 
     @Test
     public void shouldReturnAmount() {
-        assertEquals(1250, cashMachine.getAmount());
+        assertEquals(1250, cashMachine.getBalance());
     }
 
     @Test
