@@ -11,11 +11,14 @@ public class CarsApplication {
     private static final Random random = new Random();
 
     public static void main(String[] args) {
-        Car[] cars = new Car[15];
-        for(int i = 0; i< cars.length; i++)
-            cars[i] =drawCar();
-        for (Car car : cars)
+        int randomLength = random.nextInt(15)+1;
+        Car[] cars = new Car[randomLength];
+        for(int i = 0; i< cars.length; i++) {
+            cars[i] = drawCar();
+        }
+        for (Car car : cars) {
             CarUtils.describeCar(car);
+        }
     }
 
     public static Car drawCar() {
