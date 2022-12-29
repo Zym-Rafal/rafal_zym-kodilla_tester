@@ -16,13 +16,9 @@ public class SchoolDirectory {
         for (Map.Entry<Principal, School> entry : principalToSchool.entrySet()) {
             Principal principal = entry.getKey();
             School school = entry.getValue();
-            int sum = 0;
-            for (int value : school.getNumberOfStudentsInEachClasses()) {
-                sum  += value;
-            }
 
             System.out.println(principal.toString());
-            System.out.println(school.getName() + " - Students: " + sum);
+            System.out.println(school.getName() + " - Students: " + school.getNumberOfAllStudentsInSchool());
         }
     }
 

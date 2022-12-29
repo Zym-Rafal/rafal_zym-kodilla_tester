@@ -22,5 +22,11 @@ public class School {
         return numberOfStudentsInEachClasses;
     }
 
+    public int getNumberOfAllStudentsInSchool() {
+        return numberOfStudentsInEachClasses.stream()
+                .mapToInt(Integer::intValue)
+                .sum();
+    }
+
 
 }
