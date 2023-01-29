@@ -20,31 +20,30 @@ public class CarFactory {
     @Bean
     public Car getCarBySeason(String season) {
         Car car = null;
+        boolean shouldLightsBeOn = shouldLightsBeOn(getRandomTime());
         switch (season) {
             case "Winter":
-                car = new SUV();
+                car = new SUV(shouldLightsBeOn);
                 break;
             case "Summer":
-                car = new Cabrio();
+                car = new Cabrio(shouldLightsBeOn);
                 break;
             case "Spring":
             case "Autumn":
-                car = new Sedan();
+                car = new Sedan(shouldLightsBeOn);
                 break;
         }
         return car;
     }
 
-    @Bean
-    public Time getRandomTime() {
+    private Time getRandomTime() {
         Random generator = new Random();
         final int millisInDay = 24*60*60*1000;
         long chosen = (long) generator.nextInt(millisInDay);
         return new Time(chosen);
     }
 
-    @Bean
-    public boolean shouldLightsBeOn(Time time) {
+    private boolean shouldLightsBeOn(Time time) {
         if(time.getHours() > 20 || time.getHours() < 6)
             return true;
         else return false;

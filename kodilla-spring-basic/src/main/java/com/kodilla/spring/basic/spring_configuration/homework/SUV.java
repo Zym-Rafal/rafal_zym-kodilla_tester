@@ -2,7 +2,11 @@ package com.kodilla.spring.basic.spring_configuration.homework;
 
 public class SUV implements Car {
 
-    boolean isLightOn = false;
+    boolean isLightOn;
+
+    public SUV(boolean isLightOn) {
+        this.isLightOn = isLightOn;
+    }
 
     @Override
     public boolean hasHeadlightsTurnedOn() {
